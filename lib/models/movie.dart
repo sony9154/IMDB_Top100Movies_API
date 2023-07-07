@@ -3,13 +3,13 @@
 class Movie {
   final String id;
   final String title;
-  final String thumbnail;
+  final String image;
   final String rating;
 
   Movie({
     required this.id,
     required this.title,
-    required this.thumbnail,
+    required this.image,
     required this.rating,
   });
 
@@ -17,7 +17,7 @@ class Movie {
     return Movie(
       id: json['id'] as String,
       title: json['title'] as String,
-      thumbnail: json['thumbnail'] as String,
+      image: json['image'] as String,
       rating: json['rating'] as String,
     );
   }
@@ -30,7 +30,7 @@ class Movie {
 
   @override
   String toString() {
-    return 'Movie{id: $id, title: $title, thumbnail: $thumbnail, rating: $rating}';
+    return 'Movie{id: $id, title: $title, image: $image, rating: $rating}';
   }
 
 }
