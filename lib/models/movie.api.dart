@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:top_100_movies/models/recipe.dart';
+import 'package:top_100_movies/models/movie.dart';
 import 'package:http/http.dart' as http;
 
 

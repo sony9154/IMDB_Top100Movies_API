@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:top_100_movies/models/recipe.dart';
-import 'package:top_100_movies/views/widgets/recipe_card.dart';
+import 'package:top_100_movies/models/movie.dart';
+import 'package:top_100_movies/views/widgets/movie_card.dart';
 
-import '../models/recipe.api.dart';
+import '../models/movie.api.dart';
 
  class HomePage extends StatefulWidget {
   const HomePage({super.key});
