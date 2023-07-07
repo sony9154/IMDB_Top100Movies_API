@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> getMovies() async {
-    _movies = await RecipeApi.getMovies();
+    _movies = await MovieApi.getMovies();
     setState(() {
       _isLoading = false;
     });
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
             : ListView.builder(
                 itemCount: _movies.length,
                 itemBuilder: (context, index) {
-                  return RecipeCard(
+                  return MovieCard(
                       id: _movies[index].id,
                       title: _movies[index].title,
                       rating: _movies[index].rating,

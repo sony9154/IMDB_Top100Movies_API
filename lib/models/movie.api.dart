@@ -24,7 +24,7 @@ import 'package:http/http.dart' as http;
 //   }
 // }
 
-class RecipeApi {
+class MovieApi {
   static Future<List<Movie>> getMovies() async {
     var uri = Uri.https('imdb-top-100-movies.p.rapidapi.com', '/');
 
