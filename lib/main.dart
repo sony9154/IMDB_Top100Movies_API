@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_100_movies/views/home.dart';
+import 'package:top_100_movies/models/movie.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());

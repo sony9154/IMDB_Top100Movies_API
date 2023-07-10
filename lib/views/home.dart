@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                       id: _movies[index].id,
                       title: _movies[index].title,
                       rating: _movies[index].rating,
-                      thumbnail: _movies[index].image);
+                      image: _movies[index].image);
                 },
               ),
       bottomNavigationBar: FlashyTabBar(

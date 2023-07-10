@@ -33,4 +33,6 @@ class Movie {
     return 'Movie{id: $id, title: $title, image: $image, rating: $rating}';
   }
 
+  static initial() {}
+
 }
