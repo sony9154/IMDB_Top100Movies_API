@@ -3,6 +3,7 @@ import 'package:top_100_movies/models/movie.dart';
 import 'package:top_100_movies/views/widgets/movie_card.dart';
 import '../models/movie.api.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
+import 'favorite.dart';
 
  class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,7 +12,12 @@ import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
  }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomePage(),
+    const FavoritePage(),
+  ];
 
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
@@ -72,9 +78,19 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
       bottomNavigationBar: FlashyTabBar(
-        selectedIndex: _selectedIndex,
+        selectedIndex: _currentIndex,
         showElevation: true,
-        onItemSelected: (index) => setState(() => _selectedIndex = index),
+        onItemSelected: (index) {
+          setState(() {
+            _currentIndex = index;
+            if (_currentIndex == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FavoritePage()),
+              );
+            }
+          });
+        },
         items: [
           FlashyTabBarItem(
             icon: Icon(Icons.home),
