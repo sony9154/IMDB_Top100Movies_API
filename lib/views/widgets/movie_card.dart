@@ -67,6 +67,7 @@ class MovieCard extends StatelessWidget {
                     title: title,
                     image: image,
                     rating: rating,
+                    isFavorite: true,
                   ));
                 },
                 style: ElevatedButton.styleFrom(
@@ -154,18 +155,18 @@ class MyFavState extends ChangeNotifier {
 
   var favorites = <Movie>[];
 
-  void toggleFavorite(Pair? pair) {
-  print('Before: $favorites');
+  void toggleFavorite(Movie? pair) {
   if (pair != null) {
     if (favorites.contains(pair)) {
       favorites.remove(pair);
+      pair.isFavorite = false;
     } else {
       favorites.add(pair);
+      pair.isFavorite = true;
     }
     current = pair;
     notifyListeners();
   }
-  print('After: $favorites');
 }
 
   

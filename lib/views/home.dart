@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _isLoading = false;
     });
-    print(_movies);
+    // print(_movies);
   }
 
   @override
