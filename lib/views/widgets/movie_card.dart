@@ -4,18 +4,35 @@ import 'package:top_100_movies/models/movie.dart';
 
 
  
-class MovieCard extends StatelessWidget {
+class MovieCard extends StatefulWidget {
 
   final String id;
   final String title;
   final String image;
   final String rating;
-  MovieCard({
+
+  const MovieCard({
+    Key? key,
     required this.id,
     required this.title,
     required this.image,
     required this.rating,
-  });
+  }) : super(key: key);
+
+  @override
+  _MovieCardState createState() => _MovieCardState();
+
+}
+
+class _MovieCardState extends State<MovieCard> {
+  bool _isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyFavState>();
@@ -52,7 +69,7 @@ class MovieCard extends StatelessWidget {
             Colors.black.withOpacity(0.35),
             BlendMode.multiply,
           ),
-          image: NetworkImage(image),
+          image: NetworkImage(widget.image),
           fit: BoxFit.cover,
         ),
       ),
@@ -62,18 +79,18 @@ class MovieCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5.0),
             child: ElevatedButton.icon(
                 onPressed: () {
-                  appState.toggleFavorite(Movie(
-                    id: id,
-                    title: title,
-                    image: image,
-                    rating: rating,
-                    isFavorite: true,
-                  ));
+                  context.read<MyFavState>().toggleFavorite(Movie(id: widget.id, title: widget.title, rating: widget.rating, image: widget.image));
+                  setState(() {
+                    _isFavorite = !_isFavorite;
+                  });
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.withOpacity(0.0),
                 ),
-                icon: Icon(icon),
+                icon: Icon(
+                _isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: _isFavorite ? Colors.red : null,
+                ),
                 label: Text('Like'),
               ),
           ),
@@ -81,7 +98,7 @@ class MovieCard extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 5.0),
               child: Text(
-                id,
+                widget.id,
                 style: TextStyle(
                   fontSize: 19,
                 ),
@@ -111,7 +128,7 @@ class MovieCard extends StatelessWidget {
                         size: 18,
                       ),
                       SizedBox(width: 7),
-                      Text(title),
+                      Text(widget.title),
                     ],
                   ),
                 ),
@@ -130,7 +147,7 @@ class MovieCard extends StatelessWidget {
                         size: 18,
                       ),
                       SizedBox(width: 7),
-                      Text(rating),
+                      Text(widget.rating),
                     ],
                   ),
                 )
