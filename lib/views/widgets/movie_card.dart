@@ -18,16 +18,16 @@ class MovieCard extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    // var appState = context.watch<MyFavState>();
-    // var pair = appState.current;
+    var appState = context.watch<MyFavState>();
+    var pair = appState.current;
       IconData icon;
       icon = Icons.favorite;
-      // if (appState.favorites.contains(pair)) {
+      if (appState.favorites.contains(pair)) {
           icon = Icons.favorite;
-      // } 
-      // else {
-          // icon = Icons.favorite_border;
-      // }
+      } 
+      else {
+          icon = Icons.favorite_border;
+      }
    
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 22, vertical: 10),
@@ -62,7 +62,12 @@ class MovieCard extends StatelessWidget {
             padding: const EdgeInsets.only(left: 5.0),
             child: ElevatedButton.icon(
                 onPressed: () {
-                  print('Like button pressed');
+                  appState.toggleFavorite(Movie(
+                    id: id,
+                    title: title,
+                    image: image,
+                    rating: rating,
+                  ));
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey.withOpacity(0.0),
@@ -149,18 +154,19 @@ class MyFavState extends ChangeNotifier {
 
   var favorites = <Movie>[];
 
-  void toggleFavorite([Movie? pair]) {
-    pair = pair ?? current;
+  void toggleFavorite(Pair? pair) {
+  print('Before: $favorites');
+  if (pair != null) {
     if (favorites.contains(pair)) {
       favorites.remove(pair);
     } else {
-      favorites.add(pair!);
+      favorites.add(pair);
     }
+    current = pair;
     notifyListeners();
   }
+  print('After: $favorites');
+}
 
-  void removeFavorite(Movie pair) {
-    favorites.remove(pair);
-    notifyListeners();
-  }
+  
 }

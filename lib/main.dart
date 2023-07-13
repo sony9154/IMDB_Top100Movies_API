@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:top_100_movies/views/home.dart';
 import 'package:top_100_movies/models/movie.dart';
 import 'package:provider/provider.dart';
+import 'package:top_100_movies/views/widgets/movie_card.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MyFavState()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
