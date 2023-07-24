@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:top_100_movies/models/movie.dart';
+import 'package:top_100_movies/views/favoritesPage.dart';
 
 
  
@@ -35,7 +36,7 @@ class _MovieCardState extends State<MovieCard> {
 
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyFavState>();
+    var appState = context.watch<MyMovieState>();
     var pair = appState.current;
       IconData icon;
       icon = Icons.favorite;
@@ -173,18 +174,22 @@ class MyFavState extends ChangeNotifier {
   var favorites = <Movie>[];
 
   void toggleFavorite(Movie? pair) {
-  if (pair != null) {
-    if (favorites.contains(pair)) {
-      favorites.remove(pair);
-      pair.isFavorite = false;
-    } else {
-      favorites.add(pair);
-      pair.isFavorite = true;
+    if (pair != null) {
+      if (favorites.contains(pair)) {
+        favorites.remove(pair);
+        pair.isFavorite = false;
+      } else {
+        favorites.add(pair);
+        pair.isFavorite = true;
+      }
+      current = pair;
+      notifyListeners();
     }
-    current = pair;
+  }
+
+  void removeFavorite(Movie movie) {
+    favorites.remove(movie);
     notifyListeners();
   }
-}
-
   
 }

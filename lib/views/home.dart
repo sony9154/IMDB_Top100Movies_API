@@ -3,7 +3,7 @@ import 'package:top_100_movies/models/movie.dart';
 import 'package:top_100_movies/views/widgets/movie_card.dart';
 import '../models/movie.api.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
-import 'favorite.dart';
+import 'package:top_100_movies/views/favoritesPage.dart';
 
  class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const FavoritePage(),
+    FavoritesPage(),
   ];
 
   static const List<Widget> _widgetOptions = <Widget>[
@@ -85,10 +85,11 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             _currentIndex = index;
             if (_currentIndex == 1) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FavoritePage()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => FavoritesPage()),
+              // );
+              Navigator.pushNamed(context, '/favorites');
             }
           });
         },

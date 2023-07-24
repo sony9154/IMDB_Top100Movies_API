@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:top_100_movies/views/home.dart';
-import 'package:top_100_movies/models/movie.dart';
 import 'package:provider/provider.dart';
 import 'package:top_100_movies/views/widgets/movie_card.dart';
+import 'package:top_100_movies/views/favoritesPage.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => MyFavState()),
+        ChangeNotifierProvider(create: (_) => MyMovieState()),
       ],
       child: const MyApp(),
     ),
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '食譜',
+      title: 'My Top 100 Movies',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -31,7 +32,11 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.white),
         ),
       ),
-      home: const HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/favorites': (context) => FavoritesPage(),
+  },
     );
   }
 }
