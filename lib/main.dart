@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_100_movies/views/home.dart';
 import 'package:provider/provider.dart';
+import 'package:top_100_movies/views/order_tracking_page.dart';
 import 'package:top_100_movies/views/widgets/movie_card.dart';
 import 'package:top_100_movies/views/favoritesPage.dart';
 
@@ -32,10 +33,11 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.white),
         ),
       ),
-      initialRoute: '/',
+      initialRoute: '/home',
       routes: {
-        '/': (context) => const HomePage(),
+        '/home': (context) => const HomePage(),
         '/favorites': (context) => FavoritesPage(),
+        '/maps': (context) => OrderTrackingPage(),
   },
     );
   }

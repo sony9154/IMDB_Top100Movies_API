@@ -59,6 +59,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 context,
                 MaterialPageRoute(builder: (context) => HomePage()),
               );
+            } else if (_currentIndex == 2) {
+              Navigator.pushNamed(context, '/maps');
+            } else if (_currentIndex == 3) {
+              Navigator.pushNamed(context, '/profile');
             }
           });
         },
@@ -70,6 +74,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
           FlashyTabBarItem(
             icon: Icon(Icons.favorite),
             title: Text('Favorite'),
+          ),
+          FlashyTabBarItem(
+            icon: Icon(Icons.map),
+            title: Text('Map'),
           ),
           FlashyTabBarItem(
             icon: Icon(Icons.person),

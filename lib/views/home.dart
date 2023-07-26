@@ -3,7 +3,6 @@ import 'package:top_100_movies/models/movie.dart';
 import 'package:top_100_movies/views/widgets/movie_card.dart';
 import '../models/movie.api.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
-import 'package:top_100_movies/views/favoritesPage.dart';
 
  class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,12 +12,13 @@ import 'package:top_100_movies/views/favoritesPage.dart';
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-
+  /**
   final List<Widget> _pages = [
     const HomePage(),
     FavoritesPage(),
   ];
-
+  **/
+  /** 
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
       'Home',
@@ -29,10 +29,15 @@ class _HomePageState extends State<HomePage> {
       style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
     ),
     Text(
+      'Maps',
+      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+    ),
+    Text(
       'Profile',
       style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
     ),
   ];
+  **/
 
   List<Movie> _movies = [];
   bool _isLoading = true;
@@ -90,6 +95,8 @@ class _HomePageState extends State<HomePage> {
               //   MaterialPageRoute(builder: (context) => FavoritesPage()),
               // );
               Navigator.pushNamed(context, '/favorites');
+            } else if (_currentIndex == 2) {
+              Navigator.pushNamed(context, '/maps');
             }
           });
         },
@@ -101,6 +108,10 @@ class _HomePageState extends State<HomePage> {
           FlashyTabBarItem(
             icon: Icon(Icons.favorite),
             title: Text('Favorite'),
+          ),
+          FlashyTabBarItem(
+            icon: Icon(Icons.map),
+            title: Text('Maps'),
           ),
           FlashyTabBarItem(
             icon: Icon(Icons.person),

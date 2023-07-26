@@ -4,6 +4,7 @@ import 'package:top_100_movies/models/movie.dart';
 import 'package:top_100_movies/views/favoritesPage.dart';
 
 
+
  
 class MovieCard extends StatefulWidget {
 
