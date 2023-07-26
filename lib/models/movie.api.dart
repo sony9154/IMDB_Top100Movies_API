@@ -3,21 +3,19 @@ import 'package:top_100_movies/models/movie.dart';
 import 'package:http/http.dart' as http;
 
 
+
 class MovieApi {
   static Future<List<Movie>> getMovies() async {
-    var uri = Uri.https('imdb-top-100-movies.p.rapidapi.com', '/');
-
+    
+    var uri = Uri.https('raw.githubusercontent.com', '/sony9154/top100MovieJSON/main/top100movies.json');
     final response = await http.get(uri, headers: {
-      "x-rapidapi-key": "9d91a29303msh49cfae3c45707e2p1bfbbdjsn69f349e971e8",
-      "x-rapidapi-host": "imdb-top-100-movies.p.rapidapi.com"
+      "Accept": "application/json",
+      "Content-Type": "application/json"
     });
 
-    // Map<dynamic, dynamic> data = jsonDecode(response.body);
     List<dynamic> responseData = jsonDecode(response.body);
     List<Movie> movies = [];
  
-    
-
     for (var i in responseData) {
       movies.add(Movie.fromJson(i));
     }
