@@ -75,10 +75,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
             icon: Icon(Icons.favorite),
             title: Text('Favorite'),
           ),
-          FlashyTabBarItem(
-            icon: Icon(Icons.map),
-            title: Text('Map'),
-          ),
+          // FlashyTabBarItem(
+          //   icon: Icon(Icons.map),
+          //   title: Text('Map'),
+          // ),
           FlashyTabBarItem(
             icon: Icon(Icons.person),
             title: Text('Profile'),

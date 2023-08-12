@@ -7,19 +7,20 @@ import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:location/location.dart';
 
 
-class OrderTrackingPage extends StatefulWidget {
-  const OrderTrackingPage({Key? key}) : super(key: key);
+
+class TheaterTrackingPage extends StatefulWidget {
+  const TheaterTrackingPage({Key? key}) : super(key: key);
   
   @override
-  State<OrderTrackingPage> createState() => OrderTrackingPageState();
+  State<TheaterTrackingPage> createState() => TheaterTrackingPageState();
 }
 
-class OrderTrackingPageState extends State<OrderTrackingPage> {
+class TheaterTrackingPageState extends State<TheaterTrackingPage> {
   int _currentIndex = 2;
-  final Completer<GoogleMapController> _controller = Completer();
+  // final Completer<GoogleMapController> _controller = Completer();
   
-  static const LatLng sourceLocation = LatLng(37.33500926, -122.03272188);
-  static const LatLng destination = LatLng(37.33429383, -122.06600055);
+  static const LatLng sourceLocation = LatLng(25.0412678, 121.5661076);
+  static const LatLng destination = LatLng(25.0362387, 121.5650377);
 
   List<LatLng> polylineCoordinates = [];
   LocationData? currentLocation;
@@ -30,40 +31,51 @@ class OrderTrackingPageState extends State<OrderTrackingPage> {
     });
   }
 
+  // GoogleMapController googleMapController = await _controller.future;
+
+  
   void getPolyPoints() async {
   PolylinePoints polylinePoints = PolylinePoints();
-  PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-    googleApiKey,
-    PointLatLng(sourceLocation.latitude, sourceLocation.longitude),
-    PointLatLng(destination.latitude, destination.longitude),
-  );
-  if (result.points.isNotEmpty) {
-      result.points.forEach(
-        (PointLatLng point) => polylineCoordinates.add(
-          LatLng(point.latitude, point.longitude),
-        ),
-      );
-      setState(() {});
-  }
+  // PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
+  //   googleApiKey,
+  //   PointLatLng(sourceLocation.latitude, sourceLocation.longitude),
+  //   PointLatLng(destination.latitude, destination.longitude),
+  // );
+  // if (result.points.isNotEmpty) {
+  //     result.points.forEach(
+  //       (PointLatLng point) => polylineCoordinates.add(
+  //         LatLng(point.latitude, point.longitude),
+  //       ),
+  //     );
+  //     setState(() {});
+  // }
 }
 
 @override
 void initState() {
   getPolyPoints();
+  getCurrentLocation();
   super.initState();
 }
 
 @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: 
-      GoogleMap(
+      body: currentLocation == null
+      ? const Center(child: Text("Loading"))
+      :GoogleMap(
         initialCameraPosition: 
-        const CameraPosition(
-          target: sourceLocation,
-          zoom: 12.5,
+        CameraPosition(
+          target: LatLng(
+            currentLocation!.latitude!, currentLocation!.longitude!),
+          zoom: 13.5,
         ),
         markers: {
+          Marker(
+          markerId: const MarkerId("currentLocation"),
+          position: LatLng(
+              currentLocation!.latitude!, currentLocation!.longitude!),
+        ),
           const Marker(
             markerId: MarkerId("source"),
             position: sourceLocation,
@@ -74,7 +86,7 @@ void initState() {
           ),
         },
         onMapCreated: (mapController) {
-          _controller.complete(mapController);
+          // _controller.complete(mapController);
         },
         polylines: {
           Polyline(
