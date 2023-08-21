@@ -12,32 +12,6 @@ import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  /**
-  final List<Widget> _pages = [
-    const HomePage(),
-    FavoritesPage(),
-  ];
-  **/
-  /** 
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Favorite',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Maps',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-    Text(
-      'Profile',
-      style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-    ),
-  ];
-  **/
 
   List<Movie> _movies = [];
   bool _isLoading = true;
