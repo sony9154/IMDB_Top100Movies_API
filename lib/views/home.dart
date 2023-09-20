@@ -83,10 +83,10 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.favorite),
             title: Text('Favorite'),
           ),
-          // FlashyTabBarItem(
-          //   icon: Icon(Icons.map),
-          //   title: Text('Maps'),
-          // ),
+          FlashyTabBarItem(
+            icon: Icon(Icons.map),
+            title: Text('Maps'),
+          ),
           FlashyTabBarItem(
             icon: Icon(Icons.person),
             title: Text('Profile'),

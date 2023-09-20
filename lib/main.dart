@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:top_100_movies/views/home.dart';
 import 'package:provider/provider.dart';
+import 'package:top_100_movies/views/maps.dart';
 import 'package:top_100_movies/views/theater_tracking_page.dart';
 import 'package:top_100_movies/views/widgets/movie_card.dart';
 import 'package:top_100_movies/views/favoritesPage.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomePage(),
         '/favorites': (context) => FavoritesPage(),
-        '/maps': (context) => TheaterTrackingPage(),
+        '/maps': (context) => MapsPage(),
   },
     );
   }

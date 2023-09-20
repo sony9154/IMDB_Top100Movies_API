@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+// import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import '../constants.dart';
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:location/location.dart';
@@ -35,7 +35,7 @@ class TheaterTrackingPageState extends State<TheaterTrackingPage> {
 
   
   void getPolyPoints() async {
-  PolylinePoints polylinePoints = PolylinePoints();
+  // PolylinePoints polylinePoints = PolylinePoints();
   // PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
   //   googleApiKey,
   //   PointLatLng(sourceLocation.latitude, sourceLocation.longitude),
